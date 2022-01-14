@@ -90,7 +90,7 @@ router.get('/kakao/identifier', async function(req, res) {
         var name = req.query.name
 
         if(name == null){
-            res.status(200).json(`/${routeName} : callback`)
+            res.status(200).json(`/${routeName} : identifier`)
         } else {
             res.status(200).json(`/${routeName} : ` + name )
         }
