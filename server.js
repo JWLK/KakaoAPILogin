@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 const session = require('express-session')
 const passport = require('passport')
 
-dotenv.config({path: '.env-local'})
+dotenv.config({path: '.env.local'})
 
 const app = express()
 const PORT = process.env.PORT || '3001'
