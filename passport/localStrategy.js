@@ -17,8 +17,19 @@ module.exports = () => {
             },
             async (email, password, done) => {
                 try {
-                    const sqlQuery_UserCheck = 'SELECT * FROM user_list WHERE email = ?'
-                    const exUser = await pool.query(sqlQuery_UserCheck, email)
+                    const sqlGetUser = 'SELECT password FROM user_list WHERE email = ?'
+                    const rows = await pool.query(sqlGetUser, email)
+                    // res.status(200).json({"code": "200", "desc": "Login Succeed", "result" : rows})
+                    if(rows[0]) {
+                        const isValid = await bcrypt.compare(password, rows[0].password)
+                        if(isValid) {
+                            done(null, rows[0]);
+                        } else {
+                            done(null, false, { message: '비밀번호가 일치하지 않습니다.' });
+                        }
+                    } else {
+                        done(null, false, { message: '가입되지 않은 회원입니다.' });
+                     }
 
                 } catch(error) {
                     console.error(error)

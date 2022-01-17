@@ -84,7 +84,7 @@ router.post('/login', async (req, res) => {
         const sqlGetUser = 'SELECT password FROM user_list WHERE email = ?'
         const rows = await pool.query(sqlGetUser, email)
         // res.status(200).json({"code": "200", "desc": "Login Succeed", "result" : rows})
-        if(rows) {
+        if(rows[0]) {
             const isValid = await bcrypt.compare(password, rows[0].password)
             res.status(200).json({"code": "200", "desc": "Login Succeed", "result" : isValid})
         } else {
