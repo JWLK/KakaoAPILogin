@@ -3,10 +3,9 @@ const router = express.Router()
 const pool =require('../helpers/database')
 const bcrypt = require('bcrypt')
 const { v4 } = require('uuid')
-const e = require('express')
 
 
-router.get('/', async function(req, res) {
+router.get('/', async (req, res) => {
     try {
         res.status(200).json('/user')
         
@@ -16,7 +15,7 @@ router.get('/', async function(req, res) {
     
 });
 
-router.post('/', async function(req, res) {
+router.post('/', async (req, res) => {
     try {
         const {code, name} = req.body
 
@@ -33,7 +32,7 @@ router.post('/', async function(req, res) {
 });
 
 
-router.get('/search', async function(req, res) {
+router.get('/search', async (req, res) => {
     try {
         var email = req.query.email
         if(email == null){
@@ -52,7 +51,7 @@ router.get('/search', async function(req, res) {
     
 });
 
-router.post('/signup', async function(req, res) {
+router.post('/signup', async (req, res) => {
     try {
         const {email, password} = req.body
         const uuid = v4()
@@ -78,7 +77,7 @@ router.post('/signup', async function(req, res) {
 });
 
 
-router.post('/login', async function(req, res) {
+router.post('/login', async (req, res) => {
     try {
         const {email, password} = req.body;
         

@@ -4,7 +4,7 @@ const pool =require('../helpers/database')
 
 const routeName = 'default'
 
-router.get('/', async function(req, res) {
+router.get('/', async (req, res) => {
     try {
         var name = req.query.name
 
@@ -20,7 +20,7 @@ router.get('/', async function(req, res) {
     
 });
 
-router.post('/', async function(req, res) {
+router.post('/', async (req, res) => {
     try {
         const {code, name} = req.body
 
@@ -36,7 +36,7 @@ router.post('/', async function(req, res) {
     }
 });
 
-router.patch('/', async function(req, res) {
+router.patch('/', async (req, res) => {
     try {
         var jsonData = req.body.map((data, index) => {
             var mark_index = `mark_${index}`
@@ -67,7 +67,7 @@ router.patch('/', async function(req, res) {
     }
 });
 
-router.delete('/', async function(req, res) {
+router.delete('/', async (req, res) => {
     const idx = parseInt(req.query.idx, 10)
     if(!idx) {
         return res.status(400).json({"result": "0", "error": error})
