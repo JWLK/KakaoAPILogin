@@ -15,7 +15,7 @@ router.get('/', async function(req, res) {
         }
         
     } catch (error) {
-        res.status(400).json({"result": "0", "error": error})
+        res.status(400).json({"code": "400", "error": error})
     }
     
 });
@@ -32,7 +32,7 @@ router.post('/', async function(req, res) {
         res.status(200).json({code: code, name: name})
 
     } catch (error) {
-        res.status(400).json({"result": "0", "error": error})
+        res.status(400).json({"code": "400", "error": error})
     }
 });
 
@@ -63,7 +63,7 @@ router.patch('/', async function(req, res) {
         res.status(200).json(jsonData)
 
     } catch (error) {
-        res.status(400).json({"result": "0", "error": error})
+        res.status(400).json({"code": "400", "error": error})
     }
 });
 
@@ -77,7 +77,7 @@ router.delete('/', async function(req, res) {
         res.status(200).json({idx: idx})
         
     } catch (error) {
-        res.status(400).json({"result": "0", "error": error})
+        res.status(400).json({"code": "400", "error": error})
     }
 });
 
